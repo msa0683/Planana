@@ -1,0 +1,1 @@
+CREATE DATABASE IF NOT EXISTS planana_db;
