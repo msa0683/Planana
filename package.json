@@ -20,6 +20,7 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "google-images": "^2.1.0",
     "method-override": "^2.3.9",
     "mysql2": "^1.3.6",
     "sequelize": "^4.4.2"
