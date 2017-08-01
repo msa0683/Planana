@@ -1,3 +1,81 @@
-body {
+html {
+	height: 100%;
 	background-color: #f7f7f7;
+	/*Use relative url if server is not running*/
+	background: url("../assets/background_flight.jpg") no-repeat center center fixed;
+	/*Use this static url when server is running*/
+	/*background: url("assets/background_flight.jpg") no-repeat center center fixed;*/ 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;;
+}
+
+body {
+	background-color: transparent;
+	min-height: 100%;
+}
+
+label {
+	color: white;
+	font-size: 16px;
+}
+
+button {
+	margin-top: 30px;
+}
+
+.maxHeight {
+	min-height: 100%;
+}
+
+.headerBar {
+	background-color: black;
+	height: 42px;
+	display: inline-flex;
+	color: white;
+}
+
+.logo {
+	font-family: 'Indie Flower', cursive;
+	font-size: 48px;
+	font-weight: bold;
+	margin: 0px;
+}
+
+.slogan {
+	font-family: 'Indie Flower', cursive;
+	font-size: 20px;
+	margin-bottom: 50px;
+}
+
+.login {
+	margin-top: auto;
+	margin-bottom: auto;
+	vertical-align: middle;
+}
+
+#radius {
+	max-width: 100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.form-check-label {
+	margin-right: 10px;
+}
+
+.center-div {
+	min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+	min-height: 100vh; /* These two lines are counted as one :-)       */
+
+	display: flex;
+	align-items: center;
+}
+
+.main-content {
+	margin-top: auto;
+	margin-bottom: auto;
+	height: 500px;
+	vertical-align: middle;
 }
