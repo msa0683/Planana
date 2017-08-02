@@ -2,9 +2,9 @@ html {
 	height: 100%;
 	background-color: #f7f7f7;
 	/*Use relative url if server is not running*/
-	background: url("http://www.oh-i-see.com/blog/wp-content/uploads/2014/04/seeingNY05.gif") no-repeat center center fixed;
+	/*background: url("http://www.oh-i-see.com/blog/wp-content/uploads/2014/04/seeingNY05.gif") no-repeat center center fixed;*/
 	/*Use this static url when server is running*/
-	/*background: url("assets/background_flight.jpg") no-repeat center center fixed;*/ 
+	background: url("../assets/background_flight.jpg") no-repeat center center fixed; 
   	-webkit-background-size: cover;
   	-moz-background-size: cover;
   	-o-background-size: cover;
@@ -38,9 +38,8 @@ button {
 
 .logo {
 	font-family: 'Indie Flower', cursive;
-	font-size: 48px;
+	font-size: 32px;
 	font-weight: bold;
-	margin: 0px;
 	color: white;
 }
 
