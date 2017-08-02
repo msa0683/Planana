@@ -24,8 +24,11 @@ app.set("view engine", "handlebars");
 
 // Routes
 // =============================================================
-require("./controllers/api_controller.js")(app);
-require("./controllers/itinerary_controller.js")(app);
+var api = require('./controllers/api_controller.js');
+var itinerary = require('./controllers/itinerary_controller.js');
+app.use('/api', api);
+app.use('/itinerary', itinerary)
+
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

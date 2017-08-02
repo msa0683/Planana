@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
 
-    User.hasMany(models.activities, {
+    Itinerary.hasMany(models.activities, {
       onDelete: 'CASCADE'
     });
   };

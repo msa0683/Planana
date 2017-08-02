@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Itinerary.associate = function(models) {
+  User.associate = function(models) {
     User.hasMany(models.itineraries, {
       onDelete: 'CASCADE'
     });
