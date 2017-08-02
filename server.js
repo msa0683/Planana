@@ -19,13 +19,23 @@ app.use(bodyParser.text());
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({ defaultLayout: "main", layoutsDir: "public/layouts", partialsDir: "public/" }));
 app.set("view engine", "handlebars");
 
 // Routes
 // =============================================================
-require("./controllers/api_controller.js")(app);
-require("./controllers/itinerary_controller.js")(app);
+var api = require('./controllers/api_controller.js');
+var itinerary = require('./controllers/itinerary_controller.js');
+app.use('/api', api);
+app.use('/itinerary', itinerary)
+
+app.set('views', path.join(__dirname, './public'));
+
+app.get("/", function(req, res) {
+  res.render("index");
+});
+
+
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
