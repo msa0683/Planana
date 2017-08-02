@@ -7,7 +7,7 @@
 	</div>
 	<div class="row center-div">
 		<div class="col-xs-8 col-xs-offset-2 text-center">
-			<form action="api/city" method="GET">
+			<form action="api/activities" method="GET">
 				<div class="form-group">
 					<label for="cityName">I'm going to</label>
 					<input type="text" class="form-control" name="cityName" placeholder="City">
@@ -25,27 +25,27 @@
 				<label for="">I'm interested in</label> <br>
 				<div class="form-check">
 					<label class="form-check-label" for="activities">
-						<input class="form-check-input" type="checkbox" value="parks">
+						<input class="form-check-input" type="checkbox" name="park" value="1">
 						Parks 
 					</label>
 					<label class="form-check-label" for="activities">
-						<input class="form-check-input" type="checkbox" value="museums">
+						<input class="form-check-input" type="checkbox" name="museum" value="1">
 						Museums 
 					</label>
 					<label class="form-check-label" for="activities">
-						<input class="form-check-input" type="checkbox" value="restaurants">
+						<input class="form-check-input" type="checkbox" name="restaurant|cafe|" value="1">
 						Restaurants 
 					</label>
 					<label class="form-check-label" for="activities">
-						<input class="form-check-input" type="checkbox" value="shopping">
+						<input class="form-check-input" type="checkbox" name="shopping_mall|department_store" value="1">
 						Shopping 
 					</label>
 					<label class="form-check-label" for="activities">
-						<input class="form-check-input" type="checkbox" value="hiking">
+						<input class="form-check-input" type="checkbox" name="hiking" value="1">
 						Hiking and Nature 
 					</label>
 					<label class="form-check-label" for="activities">
-						<input class="form-check-input" type="checkbox" value="nightlife">
+						<input class="form-check-input" type="checkbox" name="night_club|bar" value="1">
 						Nightlife 
 					</label>
 				</div>
