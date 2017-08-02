@@ -26,14 +26,13 @@ app.set("view engine", "handlebars");
 // =============================================================
 var api = require('./controllers/api_controller.js');
 var itinerary = require('./controllers/itinerary_controller.js');
+var index = require('./controllers/index_controller.js');
+
 app.use('/api', api);
-app.use('/itinerary', itinerary)
+app.use('/itinerary', itinerary);
+app.use('/', index);
 
 app.set('views', path.join(__dirname, './public'));
-
-app.get("/", function(req, res) {
-  res.render("index");
-});
 
 
 

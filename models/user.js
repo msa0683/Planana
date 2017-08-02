@@ -6,7 +6,29 @@ module.exports = function(sequelize, DataTypes) {
       validation: {
         len: [1]
       }
+    },
+    first_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validation: {
+        len: [1]
+      } 
+    },
+    last_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validation: {
+        len: [1]
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validation: {
+        len: [1]
+      }
     }
+
   });
 
   User.associate = function(models) {
