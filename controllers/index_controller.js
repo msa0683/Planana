@@ -14,6 +14,13 @@ router.get("/login", function(req, res) {
 });
 
 router.post("/login", function(req,res) {
+	db.users.findOne({
+		where: {user_name: req.body.user_name}
+	}).then(function(user, err) {
+		bcrypt.compareSync(req.body.password, user.password)
+		res.redirect("/");		
+	})
+
 });
 
 router.get("/signup", function(req, res) {
