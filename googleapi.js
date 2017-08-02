@@ -25,3 +25,5 @@ client.search('Steve Angello', {page: 2});
  
 // search for certain size 
 client.search('Steve Angello', {size: 'large'});
+
+module.exports = client
