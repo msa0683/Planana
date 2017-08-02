@@ -16,11 +16,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
 
-<<<<<<< HEAD
-    User.hasMany(models.activities, {
-=======
     Itinerary.hasMany(models.activities, {
->>>>>>> 4fd6529647043574a04cfa821842f8725495defe
       onDelete: 'CASCADE'
     });
   };
