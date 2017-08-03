@@ -18,24 +18,24 @@
   				</div>
   				<div class="col-sm-6">
   					<h4> {{this.name}}</h4>
-  					<input type="hidden" name="place-name" value={{this.name}}>
-  					<p>Address :{{this.formatted_address}}</p>
+  					<input type="hidden" name="place-name" value="{{this.name}}">
+  					<p>Address: {{this.formatted_address}}</p>
   					<input type="hidden" name="place-address" 
-  					value={{this.formatted_address}}>
-					<p>Rating :{{this.rating}}</p>
-						<input type="hidden" name="place-rating" value={{this.rating}}>
+  					value="{{this.formatted_address}}">
+					<p>Rating: {{{this.rating}}}</p>
+						<input type="hidden" name="place-rating" value="{{{this.rating}}}">
 
 					{{#each this.photos}}
 								
 					 	<input type="hidden" name="photo-ref" 
-					 	value={{this.photo_reference}}>
+					 	value="{{this.photo_reference}}">
 
 					{{/each}}
 					
 
   				</div>
   				<div class="col-sm-2 button-add">
-  					<button type="submit" data={{this.place_id}} class="btn btn-primary">Add</button>
+  					<button type="submit" data="{{this.place_id}}" class="btn btn-primary">Add</button>
   				</div>
   				<div class="col-sm-12"><hr></div>
 				</div>	
@@ -51,23 +51,23 @@
   				</div>
   				<div class="col-sm-6">
   					<h4> {{this.name}}</h4>
-  					<input type="hidden" name="place-name" value={{this.name}}>
-  					<p>Address :{{this.formatted_address}}</p>
-  					<input type="hidden" name="place-address" 
-  					value={{this.formatted_address}}>
-					<p>Rating :{{this.rating}}</p>
-						<input type="hidden" name="place-rating" value={{this.rating}}>
+  					<input type="hidden" name="place_name" value="{{this.name}}">
+  					<p>Address: {{this.formatted_address}}</p>
+  					<input type="hidden" name="place_address" 
+  					value="{{this.formatted_address}}">
+					<p>Rating: {{{this.rating}}}</p>
+						<input type="hidden" name="place_rating" value="{{{this.rating}}}">
 
 					{{#each this.photos}}
 								
-					 	<input type="hidden" name="photo-ref" 
-					 	value={{this.photo_reference}}>
+					 	<input type="hidden" name="photo_ref" 
+					 	value="{{this.photo_reference}}">
 
 					{{/each}}
 
   				</div>
   				<div class="col-sm-2 button-add">
-  					<button type="submit" data={{this.place_id}} class="btn btn-primary">Add</button>
+  					<button type="submit" data="{{this.place_id}}" class="btn btn-primary">Add</button>
   				</div>
   				<div class="col-sm-12"><hr></div>
 				</div>	
@@ -85,7 +85,7 @@
 		<div class="col-sm-4"> <!-- Start Itinerary Panel -->
 		  	<div class="panel panel-default">
 		  		<div class="panel-heading">Your Itinerary</div>
-		  		<form action="" method="POST">
+		  		<form action="/itinerary/" method="POST">
 		  			<div id="itinerary-body" class="panel-body"></div>
 		  			<div class="panel-footer text-center">
 		  		  	<button type="submit" class="btn btn-success">Save

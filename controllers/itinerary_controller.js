@@ -16,8 +16,8 @@ var imageSearch = new GoogleImages('014302329711232858745:kmu70nd-fok', 'AIzaSyB
 // });
 
 
-router.get("/:city/:type", function(req, res) {
-
+router.post("/", function(req, res) {
+	console.log("request", req.body);
 });
 
 module.exports = router;
