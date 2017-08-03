@@ -2,14 +2,13 @@
 	<div class="row">
 		<div class="col-sm-8">
 		  	<div id="tab-container" class='tab-container'>
-		  		 <ul class='etabs'> <!-- Create Tabs -->
+		  		<ul class='etabs'> <!-- Create Tabs -->
 		  		   <li class='tab'><a href="#tabs1">Parks</a></li>
 		  		   <li class='tab'><a href="#tabs2">Restaurants</a></li>
-		  		   <li class='tab'><a href="#tabs3">Night Life</a></li>
-		  		 </ul> <!-- End Create Tabs -->
+{{!-- 		  		   <li class='tab'><a href="#tabs3">Night Life</a></li>
+ --}}		  	</ul> <!-- End Create Tabs -->
 		  		<div class='panel-container'>
 		  			<div id="tabs1"> <!--Tabs Id need to change depending on categories such as tabs2 tabs3-->
-
 		  				{{#each parks}}
 {{!-- 		  						{{log this}}
  --}}		  				<div id="{{this.place_id}}" class="row">
@@ -20,9 +19,21 @@
 			  				</div>
 			  				<div class="col-sm-6">
 			  					<h4> {{this.name}}</h4>
-			  					
-									<p>{{this.rating}}</p>
-									
+			  					<input type="hidden" name="place-name" value={{this.name}}>
+			  					<p>Address :{{this.formatted_address}}</p>
+			  					<input type="hidden" name="place-address" 
+			  					value={{this.formatted_address}}>
+								<p>Rating :{{this.rating}}</p>
+									<input type="hidden" name="place-rating" value={{this.rating}}>
+
+								{{#each this.photos}}
+											
+								 	<input type="hidden" name="photo-ref" 
+								 	value={{this.photo_reference}}>
+			
+								{{/each}}
+								
+
 			  				</div>
 			  				<div class="col-sm-2 button-add">
 			  					<button type="submit" data={{this.place_id}} class="btn btn-primary">Add</button>
@@ -31,48 +42,9 @@
 		  				</div>	
 		  				{{/each}} 
 		  			</div> <!--End div id="tabs1"-->
-		  			<div id="tabs2"> <!--Tabs Id need to change depending on categories such as tabs2 tabs3-->
-		  				{{#each restaurants}}
-{{!-- 		  						{{log this}}
- --}}		  				<div id="{{this.place_id}}" class="row">
-			  				<div class="col-sm-4">
-			  					<img class="img-thumbnail"   src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{#each this.photos}}
- 											{{this.photo_reference}}
- 										{{/each}}&key=AIzaSyDAWpS82SOzjGchLjXznjhyCoVC8zxQw_s">
-			  				</div>
-			  				<div class="col-sm-6">
-			  					<h4> {{this.name}}</h4>
-			  					
-									<p>{{this.rating}}</p>
-			  				</div>
-			  				<div class="col-sm-2 button-add">
-			  					<button type="submit" data={{this.place_id}} class="btn btn-primary">Add</button>
-			  				</div>
-			  				<div class="col-sm-12"><hr></div>
-		  				</div>	
-		  				{{/each}} 
-		  			</div> <!--End div id="tabs1"-->
-		  			<div id="tabs3"> <!--Tabs Id need to change depending on categories such as tabs2 tabs3-->
-		  				{{#each nightlifeList}}
-		{{!-- 		  						{{log this}}
-		--}}		  				<div id="{{this.place_id}}" class="row">
-			  				<div class="col-sm-4">
-			  					<img class="img-thumbnail"   src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{#each this.photos}}
-												{{this.photo_reference}}
-											{{/each}}&key=AIzaSyDAWpS82SOzjGchLjXznjhyCoVC8zxQw_s">
-			  				</div>
-			  				<div class="col-sm-6">
-			  					<h4> {{this.name}}</h4>
-			  					
-									<p>{{this.rating}}</p>
-			  				</div>
-			  				<div class="col-sm-2 button-add">
-			  					<button type="submit" data={{this.place_id}} class="btn btn-primary">Add</button>
-			  				</div>
-			  				<div class="col-sm-12"><hr></div>
-		  				</div>	
-		  				{{/each}} 
-		  			</div> <!--End div id="tabs1"-->
+
+
+
 		  		</div> <!--End div class='panel-container'-->
 		  	</div><!-- End of div id="tab-container" class='tab-container'-->
 		</div> <!-- End of div class="col-sm-8" -->
@@ -80,11 +52,12 @@
 		<div class="col-sm-4"> <!-- Start Itinerary Panel -->
 		  	<div class="panel panel-default">
 		  		<div class="panel-heading">Your Itinerary</div>
-		  		<div id="itinerary-body" class="panel-body"></div>
-		  		<div class="panel-footer text-center">
-		  		  <button type="submit" class="btn btn-success">Save
-		  		  </button>
-		  		</div>
+		  		<form action="" method="POST">
+		  			<div id="itinerary-body" class="panel-body"></div>
+		  			<div class="panel-footer text-center">
+		  		  	<button type="submit" class="btn btn-success">Save
+		  		  	</button></div>
+		  		</form>
 		  	</div>
 		</div> <!-- End of div class="col-sm-4" -->
 	</div> <!-- End of div class="row"-->
@@ -97,16 +70,10 @@
 
   $(".btn-primary").on("click",function (){
   		var place = $(this).attr("data");
+  		$(this).remove();
   		$("#itinerary-body").append(document.getElementById(place));
   });
 
-  Handlebars.registerHelper("printItems", function(items) {
-    var html = "<ul>";
-    items.forEach(function(entry) {
-      html += "<li>" + entry + "</li>";
-    });
-    html += "</ul>";
-    return html;
-  });
+
 
 </script>
