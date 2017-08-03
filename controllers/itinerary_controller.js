@@ -2,6 +2,8 @@ var db = require('../models');
 var express = require('express');
 var router = express.Router();
 
+var db = require("../models/itinerary.js");
+
 var GoogleImages = require('google-images');
  
 var imageSearch = new GoogleImages('014302329711232858745:kmu70nd-fok', 'AIzaSyBclnF5fngJWo6yb1A_FQvu6giC7YpSraY');
