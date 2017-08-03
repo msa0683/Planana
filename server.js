@@ -17,23 +17,34 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(bodyParser.text());
 
 // Set Handlebars.
+// =============================================================
 var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main", layoutsDir: "public/layouts", partialsDir: "public/" }));
 app.set("view engine", "handlebars");
 
+//Passport Middleware
+// =============================================================
+var passport = require("passport");
+var cookieParser = require("cookie-parser");
+var session = require("express-session")
+app.use(cookieParser());
+app.use(session({ secret: 'keyboard cat' }));
+app.use(passport.initialize());
+app.use(passport.session());
+require("./config/passport")
+
 // Routes
 // =============================================================
 var api = require('./controllers/api_controller.js');
 var itinerary = require('./controllers/itinerary_controller.js');
+var index = require('./controllers/index_controller.js');
+
 app.use('/api', api);
-app.use('/itinerary', itinerary)
+app.use('/itinerary', itinerary);
+app.use('/', index);
 
 app.set('views', path.join(__dirname, './public'));
-
-app.get("/", function(req, res) {
-  res.render("index");
-});
 
 
 
