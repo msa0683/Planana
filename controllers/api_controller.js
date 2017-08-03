@@ -8,9 +8,6 @@ var sget = require('simple-get');
 router.post("/:city/:type", function(req, res) {
   var city = req.params.city;
   var type = req.params.type;
-  var search = req.body.search;
-
-
   var query = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + city + "&type=" + type + "&key=AIzaSyDAWpS82SOzjGchLjXznjhyCoVC8zxQw_s";
   sget.concat(query, function(err, response, data) {
     if (err) throw err;
@@ -18,13 +15,5 @@ router.post("/:city/:type", function(req, res) {
     res.json(JSON.parse(data.toString('utf-8')));
   })
 });
-
-router.get("/", function(req, res, next) {
-	res.render("index");
-
-});
-
-
-
     
 module.exports = router;
