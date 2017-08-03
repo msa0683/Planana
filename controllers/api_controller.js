@@ -5,37 +5,6 @@ var router = express.Router();
 // Require jQuery
 var sget = require('simple-get');
 
-var allResults = {results: [{ formatted_address: 'San Francisco, CA, United States',
-    geometry: { location: [Object], viewport: [Object] },
-    icon: 'https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png',
-    id: '26542c7c02ab2795925b9cec81f7bac6047fd102',
-    name: 'Golden Gate Park',
-    opening_hours: { open_now: true, weekday_text: [] },
-    photos: [ [Object] ],
-    place_id: 'ChIJY_dFYHKHhYARMKc772iLvnE',
-    price_level: 0,
-    rating: 4.7,
-    reference: 'CmRRAAAANipIgqbnqdMSAjom08HhvidFOwY5oVyVnR1ZLO2SB4qLu1rFM4L_qfkwJS6Duc57wUItihR1lHJf_4FQkO0PFcKxttlHXOYDEM5hNDOH6eALb-H40r_-zVMLX2Km1jt6EhAyMfrrXbJVpUqpjK0vLZCkGhR8XT2_bcP6rHad0SXhz8v8G5ZkNw',
-    types: [ 'park', 'point_of_interest', 'establishment' ] },
-
-  { formatted_address: '800 North Point St, San Francisco, CA 94109, United States',
-    geometry: { location: [Object], viewport: [Object] },
-    icon: 'https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png',
-    id: '25be2a94b0c307fb1bd92fef211a7e98ecf99674',
-    name: 'Gary Danko',
-    opening_hours: { open_now: true, weekday_text: [] },
-    photos: [ [Object] ],
-    place_id: 'ChIJq342JeGAhYARwdtH9tlX7gg',
-    price_level: 4,
-    rating: 4.5,
-    reference: 'CmRRAAAAn0VrzoeZt97tkVqIYYSB9lP3jEKwvjs7f4_EYy_I1EA-FtOHelZ_I1yPMNzUp80flJcR0PMc9uVkLOkbVU8a7slb0rmR3UGMj3mY7N3o1BG8Y3yApAEKVvQuczCIQWzQEhAKanAViEQXqKJEvdFxmiwTGhQ50vuc-IClVAUIjkR_0Abr4HAP7w',
-    types: 
-     [ 'bar',
-       'restaurant',
-       'food',
-       'point_of_interest',
-       'establishment' ] } ] };
-
 router.get("/activities", function(req, res) {
   var formInput = req.query;
   var city = formInput.cityName;
@@ -54,10 +23,10 @@ router.get("/activities", function(req, res) {
   }
   console.log("type:", type)
 
-  var query = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + city + "&type=" + type + "&key=AIzaSyDAWpS82SOzjGchLjXznjhyCoVC8zxQw_s";
+  var query = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + city + "&type=" + type + "&key=AIzaSyDpBYxlhAV09XgxayrKh5c1Cry96YquNt0";
   sget.concat(query, function(err, response, data) {
     if (err) throw err;
-    // var allResults = JSON.parse(data.toString('utf-8'));
+    var allResults = JSON.parse(data.toString('utf-8'));
     allResults.results.forEach(function(activity){
       var stars = Math.round(activity.rating);
       var starsSTR = "";
