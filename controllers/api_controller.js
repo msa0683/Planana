@@ -21,6 +21,7 @@ router.get("/activities", function(req, res) {
     }
   }
   console.log("type:", type)
+
   var query = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + city + "&type=" + type + "&key=AIzaSyDAWpS82SOzjGchLjXznjhyCoVC8zxQw_s";
   sget.concat(query, function(err, response, data) {
     if (err) throw err;
@@ -28,5 +29,5 @@ router.get("/activities", function(req, res) {
     res.json(JSON.parse(data.toString('utf-8')));
   })
 });
-    
+
 module.exports = router;
