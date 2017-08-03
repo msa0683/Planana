@@ -1,49 +1,48 @@
 <div class="row center-div">
 	<div class="col-xs-8 col-xs-offset-2 text-center">
-		<form action="api/city" method="POST">
-			<div class="form-group">
-				<label for="cityName">I'm going to</label>
-				<input type="text" class="form-control" name="cityName" placeholder="City">
-			</div>
-<!-- 					<div class="form-group">
-				<label for="radius">Radius (miles):</label>
-				<select class="form-control" name="radius" id="radius">
-					<option value="10">10</option>
-					<option value="25">25</option>
-					<option value="50">50</option>
-					<option value="75">75</option>
-					<option value="100">100</option>							
-				</select>
-			</div> -->
-			<label for="">I'm interested in</label> <br>
-			<div class="form-check">
-				<label class="form-check-label" for="activities">
-					<input class="form-check-input" type="checkbox" value="parks">
-					Parks 
-				</label>
-				<label class="form-check-label" for="activities">
-					<input class="form-check-input" type="checkbox" value="museums">
-					Museums 
-				</label>
-				<label class="form-check-label" for="activities">
-					<input class="form-check-input" type="checkbox" value="restaurants">
-					Restaurants 
-				</label>
-				<label class="form-check-label" for="activities">
-					<input class="form-check-input" type="checkbox" value="shopping">
-					Shopping 
-				</label>
-				<label class="form-check-label" for="activities">
-					<input class="form-check-input" type="checkbox" value="hiking">
-					Hiking and Nature 
-				</label>
-				<label class="form-check-label" for="activities">
-					<input class="form-check-input" type="checkbox" value="nightlife">
-					Nightlife 
-				</label>
-			</div>
-
-			<button type="submit" class="btn btn-primary">Plan Your Trip!</button>
-		</form>
+	  <form action="api/activities" method="GET">
+	    <div class="form-group">
+	      <label for="cityName">I'm going to</label>
+	      <input type="text" class="form-control" name="cityName" placeholder="City">
+	    </div>
+	<!-- 					<div class="form-group">
+	      <label for="radius">Radius (miles):</label>
+	      <select class="form-control" name="radius" id="radius">
+	        <option value="10">10</option>
+	        <option value="25">25</option>
+	        <option value="50">50</option>
+	        <option value="75">75</option>
+	        <option value="100">100</option>							
+	      </select>
+	    </div> -->
+	    <label for="">I'm interested in</label> <br>
+	    <div class="form-check">
+	      <label class="form-check-label" for="activities">
+	        <input class="form-check-input" type="checkbox" name="park" value="1">
+	        Parks 
+	      </label>
+	      <label class="form-check-label" for="activities">
+	        <input class="form-check-input" type="checkbox" name="museum" value="1">
+	        Museums 
+	      </label>
+	      <label class="form-check-label" for="activities">
+	        <input class="form-check-input" type="checkbox" name="restaurant|cafe|" value="1">
+	        Restaurants 
+	      </label>
+	      <label class="form-check-label" for="activities">
+	        <input class="form-check-input" type="checkbox" name="shopping_mall|department_store" value="1">
+	        Shopping 
+	      </label>
+	      <label class="form-check-label" for="activities">
+	        <input class="form-check-input" type="checkbox" name="hiking" value="1">
+	        Hiking and Nature 
+	      </label>
+	      <label class="form-check-label" for="activities">
+	        <input class="form-check-input" type="checkbox" name="night_club|bar" value="1">
+	        Nightlife 
+	      </label>
+	    </div>
+	    <button type="submit" class="btn btn-primary">Plan Your Trip!</button>
+	  </form>
 	</div>
 </div>
