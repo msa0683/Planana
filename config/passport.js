@@ -21,10 +21,13 @@ passport.use(new LocalStrategy(
 passport.use(new FacebookStrategy ({
   clientID: "750249591766521",
   clientSecret: "a8f565dffb327f944dfb8b5eeb965dea",
-  callbackURL: "http://localhost:3000/fb-auth/return" 
+  callbackURL: "http://localhost:3000//auth/facebook/return" 
 }, function(accessToken, refreshToken, profile, cb) {
+      console.log(profile)
       return cb(null, profile)
+
 }));
+
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);

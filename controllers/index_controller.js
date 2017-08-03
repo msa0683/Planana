@@ -52,12 +52,12 @@ router.post("/signup", function(req, res) {
 
 
 
-router.get('/fb-auth/return', passport.authenticate('facebook', {
+router.get('/auth/facebook/return', passport.authenticate('facebook', {
 	successRedirect:"/",
 	failureRedirect: "/login"
 }));
 
-router.get("fb-auth", passport.authenticate('facebook'))
+router.get("/auth/facebook", passport.authenticate('facebook'), function () {})
 
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', { successRedirect: '/',
