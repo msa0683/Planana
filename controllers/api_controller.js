@@ -46,8 +46,9 @@ router.get("/activities", function(req, res) {
       nightlife: nightlifeList
     };
     // console.log(allLists)
-    res.json(allLists);
-  })
+    //res.json(allLists);
+    res.render("thingstodo.handlebars",allLists);
+  });
 });
 
 module.exports = router;
