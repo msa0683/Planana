@@ -2,6 +2,7 @@ var db = require('../models');
 var express = require('express');
 var router = express.Router();
 var bcrypt = require("bcrypt");
+var passport = require("passport");
 
 var saltRounds = 10;
 
@@ -10,28 +11,37 @@ router.get("/", function(req, res) {
 });
 
 router.get("/login", function(req, res) {
-	res.render("login");
+	if (req.isAuthenticated()) {
+		res.redirect("/");
+	} 
+	else {
+		res.render("login");
+	}
 });
 
-router.post("/login", function(req,res) {
-	db.users.findOne({
-		where: {user_name: req.body.user_name}
-	}).then(function(user, err) {
-		bcrypt.compareSync(req.body.password, user.password)
-		res.redirect("/");		
-	})
-
-});
+router.post("/login", 
+	passport.authenticate('local', { 
+		successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true 
+    })
+);
 
 router.get("/signup", function(req, res) {
-	res.render("signup")
+	if (req.isAuthenticated()) {
+		res.redirect("/")
+	}
+	else {
+		res.render("signup")
+	}
+	
 });
 
 router.post("/signup", function(req, res) {
 	var user = {
 		first_name: req.body.first_name,
 		last_name: req.body.last_name,
-  		user_name: req.body.user_name,
+  		username: req.body.username,
   		password:  bcrypt.hashSync(req.body.password, saltRounds) 
   	};
 
@@ -42,11 +52,16 @@ router.post("/signup", function(req, res) {
 
 
 
-// router.get('/auth/facebook', passport.authenticate('facebook'));
+router.get('/fb-auth/return', passport.authenticate('facebook', {
+	successRedirect:"/",
+	failureRedirect: "/login"
+}));
 
-// router.get('/auth/facebook/callback',
-//   passport.authenticate('facebook', { successRedirect: '/',
-//                                       failureRedirect: '/login' }));
+router.get("fb-auth", passport.authenticate('facebook'))
+
+router.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { successRedirect: '/',
+                                      failureRedirect: '/login' }));
 
 
 module.exports = router;

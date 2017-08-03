@@ -17,10 +17,22 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(bodyParser.text());
 
 // Set Handlebars.
+// =============================================================
 var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main", layoutsDir: "public/layouts", partialsDir: "public/" }));
 app.set("view engine", "handlebars");
+
+//Passport Middleware
+// =============================================================
+var passport = require("passport");
+var cookieParser = require("cookie-parser");
+var session = require("express-session")
+app.use(cookieParser());
+app.use(session({ secret: 'keyboard cat' }));
+app.use(passport.initialize());
+app.use(passport.session());
+require("./config/passport")
 
 // Routes
 // =============================================================
