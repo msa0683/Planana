@@ -11,21 +11,28 @@ module.exports = function(sequelize, DataTypes) {
       },
       first_name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validation: {
           len: [1]
         } 
       },
       last_name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validation: {
           len: [1]
         }
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
+        validation: {
+          len: [1]
+        }
+      },
+      oauth_id: {
+        type: DataTypes.STRING,
+        allowNull: true,
         validation: {
           len: [1]
         }
