@@ -87,11 +87,12 @@ router.get("/activities", function(req, res) {
       malls: shoppingList,
       nightlife: nightlifeList
     };
-    console.log(allLists.restaurants);
-    // console.log(allLists)
-    // res.json(allLists);
-    res.render('results', allLists);
-  })
+
+    console.log("Park ---",parkList+"\n");
+    console.log("Rest---",restaurantsList+"\n");
+    //res.json(allLists);
+    res.render("thingstodo.handlebars",allLists);
+  });
 });
 
 module.exports = router;

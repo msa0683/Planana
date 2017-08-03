@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "",
+    "password": null,
     "database": "planana_db",
     "host": "localhost",
     "dialect": "mysql"
