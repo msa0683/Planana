@@ -271,5 +271,49 @@
 
 
 	</script>
+
+
+			  			<div id="tabs2"> <!--Tabs Id need to change depending on categories such as tabs2 tabs3-->
+			  				{{#each restaurants}}
+	{{!-- 		  						{{log this}}
+	 --}}		  				<div id="{{this.place_id}}" class="row">
+				  				<div class="col-sm-4">
+				  					<img class="img-thumbnail"   src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{#each this.photos}}
+	 											{{this.photo_reference}}
+	 										{{/each}}&key=AIzaSyDAWpS82SOzjGchLjXznjhyCoVC8zxQw_s">
+				  				</div>
+				  				<div class="col-sm-6">
+				  					<h4> {{this.name}}</h4>
+				  					
+										<p>{{this.rating}}</p>
+				  				</div>
+				  				<div class="col-sm-2 button-add">
+				  					<button type="submit" data={{this.place_id}} class="btn btn-primary">Add</button>
+				  				</div>
+				  				<div class="col-sm-12"><hr></div>
+			  				</div>	
+			  				{{/each}} 
+			  			</div> <!--End div id="tabs2"-->
+			  			<div id="tabs3"> <!--Tabs Id need to change depending on categories such as tabs2 tabs3-->
+			  				{{#each nightlifeList}}
+			{{!-- 		  						{{log this}}
+			--}}		  				<div id="{{this.place_id}}" class="row">
+				  				<div class="col-sm-4">
+				  					<img class="img-thumbnail"   src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{#each this.photos}}
+													{{this.photo_reference}}
+												{{/each}}&key=AIzaSyDAWpS82SOzjGchLjXznjhyCoVC8zxQw_s">
+				  				</div>
+				  				<div class="col-sm-6">
+				  					<h4> {{this.name}}</h4>
+				  					
+										<p>{{this.rating}}</p>
+				  				</div>
+				  				<div class="col-sm-2 button-add">
+				  					<button type="submit" data={{this.place_id}} class="btn btn-primary">Add</button>
+				  				</div>
+				  				<div class="col-sm-12"><hr></div>
+			  				</div>	
+			  				{{/each}} 
+			  			</div> <!--End div id="tabs3"-->
 </body>
 </html>

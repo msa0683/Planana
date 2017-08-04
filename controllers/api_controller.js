@@ -5,50 +5,137 @@ var router = express.Router();
 // Require jQuery
 var sget = require('simple-get');
 
-
 router.get("/activities", function(req, res) {
   var formInput = req.query;
   var city = formInput.cityName;
   var options = Object.keys(formInput);
   var type = '';
+  var tabList = [];
   for (var i = 0; i < options.length; i++) {
     if(options[i] !== 'cityName') {
-      if (i === options.length - 1) {
-        type += options[i];
-      } else {
-        type += options[i] + "|";
-      }
+      tabList.push(options[i]);
     }
   }
-  console.log("type:", type)
+  var parkList = [];
+  var museumList = [];
+  var restaurantsList = [];
+  var shoppingList = [];
+  var nightlifeList = [];
 
-  var query = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + city + "&type=" + type + "&key=AIzaSyDAWpS82SOzjGchLjXznjhyCoVC8zxQw_s";
-  sget.concat(query, function(err, response, data) {
-    if (err) throw err;
-    var allResults = JSON.parse(data.toString('utf-8'));
-    var parkList = [];
-    var museumList = [];
-    var restaurantsList = [];
-    var shoppingList = [];
-    var nightlifeList = [];
-    for (var i = 0; i < allResults.results.length; i++) {
-      if (allResults.results[i].types.indexOf('park') >= 0) parkList.push(allResults.results[i]);
-      if (allResults.results[i].types.indexOf('museum') >= 0) museumList.push(allResults.results[i]);
-      if (allResults.results[i].types.indexOf('restaurant') >= 0 || allResults.results[i].types.indexOf('cafe') >= 0) restaurantsList.push(allResults.results[i]);
-      if (allResults.results[i].types.indexOf('shopping_mall') >= 0 || allResults.results[i].types.indexOf('department_store') >= 0) shoppingList.push(allResults.results[i]);
-      if (allResults.results[i].types.indexOf('night_club') >= 0 || allResults.results[i].types.indexOf('bar') >= 0) nightlifeList.push(allResults.results[i]);
-     }
-    var allLists = {
-      parks: parkList,
-      museums: museumList,
-      restaurants: restaurantsList,
-      malls: shoppingList,
-      nightlife: nightlifeList
-    };
-    // console.log(allLists)
-    //res.json(allLists);
-    res.render("thingstodo.handlebars",allLists);
-  });
+  console.log("tabList:", tabList);
+
+  var counter = 0;
+  var newQuery = function() {
+    var query = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + city + "&type=" + tabList[counter] + "&key=AIzaSyDpBYxlhAV09XgxayrKh5c1Cry96YquNt0";
+    // Exit condition
+    if (counter >= tabList.length) {
+      var allLists = {
+        tabs: tabList,
+        parks: parkList,
+        museums: museumList,
+        restaurants: restaurantsList,
+        malls: shoppingList,
+        nightlife: nightlifeList
+      };
+      console.log("allLists:", allLists)
+      res.render("thingstodo.handlebars",allLists);
+      return;
+    }
+    // GET request to google api
+    sget.concat(query, function(err, response, data) {
+      if (err) throw err;
+      var typeResults = JSON.parse(data.toString('utf-8'));
+      typeResults.results.forEach(function(activity){
+        var stars = Math.round(activity.rating);
+        var starsSTR = "";
+        console.log("stars", stars);
+        for (var j = 0; j < stars; j++) {
+          starsSTR += "&#11088;";
+        }
+        activity.rating = starsSTR;
+      });
+      console.log("results:", typeResults.results);
+      console.log("tabList[counter]", tabList[counter]);
+      switch(tabList[counter]) {
+        case "park":
+            parkList = typeResults.results;
+            break;
+        case "museum":
+            museumList = typeResults.results;
+            break;
+        case "restaurant":
+            restaurantsList = typeResults.results;
+            break;
+        case "shopping_mall":
+            shoppingList = typeResults.results;
+            break;
+        case "night_club":
+            nightlifeList = typeResults.results;
+            break;            
+        default:
+            park = typeResults.results;
+      }
+      counter ++;
+      newQuery();
+    });
+  }
+
+  newQuery();
 });
+
+
+
+  // for (var i = 0; i < tabList.length; i++) {
+  //   var query = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + city + "&type=" + tabList[i] + "&key=AIzaSyDpBYxlhAV09XgxayrKh5c1Cry96YquNt0";
+  //   // GET request to google api
+  //   sget.concat(query, function(err, response, data) {
+  //     if (err) throw err;
+  //     var typeResults = JSON.parse(data.toString('utf-8'));
+  //     typeResults.results.forEach(function(activity){
+  //       var stars = Math.round(activity.rating);
+  //       var starsSTR = "";
+  //       console.log("stars", stars);
+  //       for (var j = 0; j < stars; j++) {
+  //         starsSTR += "&#11088;";
+  //       }
+  //       activity.rating = starsSTR;
+  //     });
+  //     console.log("results:", typeResults.results);
+  //     console.log("tabList", tabList);
+  //     console.log("i", i)
+  //     console.log("tabList[i]:", tabList[i]);
+  //     switch(tabList[i]) {
+  //       case "park":
+  //           parkList = typeResults.results;
+  //           break;
+  //       case "museum":
+  //           museum = typeResults.results;
+  //           break;
+  //       case "restaurant":
+  //           restaurant = typeResults.results;
+  //           break;
+  //       case "shopping_mall":
+  //           shopping_mall = typeResults.results;
+  //           break;
+  //       case "night_club":
+  //           night_club = typeResults.results;
+  //           break;            
+  //       default:
+  //           park = typeResults.results;
+  //     }
+  //     if (i === tabList.length - 1) {
+  //       var allLists = {
+  //         tabs: tabList,
+  //         parks: parkList,
+  //         museums: museumList,
+  //         restaurants: restaurantsList,
+  //         malls: shoppingList,
+  //         nightlife: nightlifeList
+  //       };
+  //       console.log("allLists:", allLists)
+  //       res.render("thingstodo.handlebars",allLists);
+  //     }
+  //   });
+  // }
 
 module.exports = router;
