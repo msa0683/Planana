@@ -60,22 +60,22 @@ router.get("/user/:username/api/activities", function(req, res) {
       console.log("tabList[counter]", tabList[counter]);
       switch(tabList[counter]) {
         case "park":
-            parkList = typeResults.results;
+            parkList = typeResults.results.slice(0,15);
             break;
         case "museum":
-            museumList = typeResults.results;
+            museumList = typeResults.results.slice(0,15);
             break;
         case "restaurant":
-            restaurantsList = typeResults.results;
+            restaurantsList = typeResults.results.slice(0,15);
             break;
         case "shopping_mall":
-            shoppingList = typeResults.results;
+            shoppingList = typeResults.results.slice(0,15);
             break;
         case "night_club":
-            nightlifeList = typeResults.results;
+            nightlifeList = typeResults.results.slice(0,15);
             break;            
         default:
-            park = typeResults.results;
+            park = typeResults.results.slice(0,15);
       }
       counter ++;
       newQuery();
