@@ -62,6 +62,10 @@ router.post("/signup", function(req, res) {
 	});
 });
 
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 
 router.get('/auth/facebook/return', passport.authenticate('facebook', {
