@@ -5,7 +5,8 @@ var router = express.Router();
 // Require jQuery
 var sget = require('simple-get');
 
-router.get("/activities", function(req, res) {
+router.get("/user/:username/api/activities", function(req, res) {
+  var username = req.params.username;
   var formInput = req.query;
   var city = formInput.cityName;
   var options = Object.keys(formInput);
@@ -30,6 +31,7 @@ router.get("/activities", function(req, res) {
     // Exit condition
     if (counter >= tabList.length) {
       var allLists = {
+        username: username,
         tabs: tabList,
         parks: parkList,
         museums: museumList,

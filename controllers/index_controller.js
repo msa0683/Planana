@@ -7,12 +7,21 @@ var passport = require("passport");
 var saltRounds = 10;
 
 router.get("/", function(req, res) {
+	if (req.isAuthenticated()) {
+		res.redirect("/user/" + req.user.username + "/home");
+	} else {
+		res.render("login");
+	}
+	// res.render("index");
+});
+
+router.get("/user/:username/home", function(req, res) {
 	res.render("index");
 });
 
 router.get("/login", function(req, res) {
 	if (req.isAuthenticated()) {
-		res.redirect("/");
+		res.redirect("/user/" + req.user.username);
 	} 
 	else {
 		res.render("login");
