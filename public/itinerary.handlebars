@@ -4,14 +4,16 @@
 				<div class="panel-header">
 					<h1><u>{{itinerary_name}}</u></h1><br>
 				</div>
-	  		{{#each activities}}
+		  		{{#each activities}}
 				<div class="panel-body">
 					<h3>{{this.activity_name}}</h3>
 					<h4>{{this.activity_address}}</h4>
 					<p>{{this.activity_time}}</p>
 					{{!-- <hr> --}}
 				</div>
-	  {{/each}}
+		  		{{/each}}
+		  		<br>
+				<div><p><a href="/" style="color:darkblue;">Back to home</a></p></div>	
 			</div>
 	</div>
 </div>

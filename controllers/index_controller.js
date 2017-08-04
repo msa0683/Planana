@@ -16,7 +16,10 @@ router.get("/", function(req, res) {
 });
 
 router.get("/user/:username/home", function(req, res) {
-	res.render("index");
+	var hbsObj = {
+		username: req.params.username
+	}
+	res.render("index", hbsObj);
 });
 
 router.get("/login", function(req, res) {
