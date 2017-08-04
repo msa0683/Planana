@@ -6,9 +6,20 @@
 				</div>
 		  		{{#each activities}}
 				<div class="panel-body">
-					<h4>{{this.activity_time}}</h4>				
-					<h3>{{this.activity_name}}</h3>
-					<p>{{this.activity_address}}</p>
+					<div class="row">				
+						<div class="col-sm-4">
+	  					<img class="img-thumbnail"   src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{this.activity_photo}}&key=AIzaSyDAWpS82SOzjGchLjXznjhyCoVC8zxQw_s">
+						</div>
+						<div class="col-sm-6">
+							<h4>{{this.activity_name}}</h4>
+							<p>{{this.activity_address}}</p>
+							<p>{{this.activity_time}}</p>
+						</div>
+						<div class="col-sm-2">
+						</div>
+						<div class="col-sm-12"><hr></div>
+					</div>
+
 					{{!-- <hr> --}}
 				</div>
 		  		{{/each}}
