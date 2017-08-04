@@ -60,7 +60,7 @@ button {
 	color: white;
 }
 
-.login {
+.login, .logout {
 	margin-top: auto;
 	margin-bottom: auto;
 	vertical-align: middle;
@@ -89,4 +89,9 @@ button {
 	margin-bottom: auto;
 	height: 500px;
 	vertical-align: middle;
+}
+
+#facebook {
+	margin: auto;
+	padding-top: 25px;
 }
