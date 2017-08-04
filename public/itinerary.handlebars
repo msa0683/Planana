@@ -1,0 +1,17 @@
+<div class="row center-div">
+	<div class="col-xs-8 col-xs-offset-2 text-center">
+			<div class="panel panel-default">
+				<div class="panel-header">
+					<h1><u>{{itinerary_name}}</u></h1><br>
+				</div>
+	  		{{#each activities}}
+				<div class="panel-body">
+					<h3>{{this.activity_name}}</h3>
+					<h4>{{this.activity_address}}</h4>
+					<p>{{this.activity_time}}</p>
+					{{!-- <hr> --}}
+				</div>
+	  {{/each}}
+			</div>
+	</div>
+</div>
