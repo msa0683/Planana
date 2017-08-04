@@ -1,0 +1,14 @@
+<div class="row center-div">
+	<div class="col-xs-8 col-xs-offset-2 text-center">
+			<div class="panel panel-default">
+				<div class="panel-header">
+					<h1>{{username}}'s Saved Itineraries</h1><br>
+				</div>
+	  		{{#each itineraries}}
+				<div class="panel-body">
+					<h3><a href="/itinerary/{{../username}}/{{this.id}}" style="color: teal;">{{this.itinerary_name}}</a></h3>
+				</div>
+	  {{/each}}
+			</div>
+	</div>
+</div>
