@@ -33,6 +33,9 @@ router.get("/:username", function(req,res) {
 	// 	}
 	// 	res.render('saved', hbsObj);
 	// })
+	function capitalizeFirstLetter(string) {
+	    return string.charAt(0).toUpperCase() + string.slice(1);
+	};
 
 	db.itineraries.findAll({
 		include: [{
@@ -47,7 +50,7 @@ router.get("/:username", function(req,res) {
 		console.log('username:', username)
 		var hbsObj = {
 			itineraries: result,
-			username: username
+			username: capitalizeFirstLetter(username)
 		}
 		// for (var i = 0; i < result.length; i++) {
 		// 	console.log("result id:", result[i].id);
@@ -76,6 +79,9 @@ router.get("/:username/:itineraryId", function(req, res) {
 		hbsObj.itinerary_name = itinObj.itinerary_name
 
 		db.activities.findAll({
+			order: [
+	          ["activity_time", "ASC"]
+	        ],
 			where: {
 				itineraryId: itineraryId
 			}
@@ -107,11 +113,11 @@ router.post("/:username", function(req, res) {
 			if (body.place_name.length > 1) {
 				for (var i = 0; i < body.place_name.length; i++) {
 					if (body.photo_ref[i] === null) body.photo_ref[i] = "";
-					db.activities.create({activity_name: body.place_name[i], activity_address: body.place_address[i], activity_photo: body.photo_ref[i], itineraryId: itineraryID}).then(function() {});
+					db.activities.create({activity_name: body.place_name[i], activity_address: body.place_address[i], activity_photo: body.photo_ref[i], activity_time: body.place_time[i], itineraryId: itineraryID}).then(function() {});
 				}
 		    	res.redirect("/itinerary/" + username);
 			} else {
-				db.activities.create({activity_name: body.place_name, activity_address: body.place_address, activity_photo: body.photo_ref, itineraryId: itineraryID}).then(function() {
+				db.activities.create({activity_name: body.place_name, activity_address: body.place_address, activity_photo: body.photo_ref, activity_time: body.place_time, itineraryId: itineraryID}).then(function() {
 			      res.redirect("/itinerary/" + username);
 			    });
 			}
