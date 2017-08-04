@@ -10,7 +10,8 @@ router.get("/", function(req, res) {
 	if (req.isAuthenticated()) {
 		res.redirect("/user/" + req.user.username + "/home");
 	} else {
-		res.render("login");
+		var hbsObj = {login: true};
+		res.render("login", hbsObj);
 	}
 	// res.render("index");
 });
@@ -24,10 +25,11 @@ router.get("/user/:username/home", function(req, res) {
 
 router.get("/login", function(req, res) {
 	if (req.isAuthenticated()) {
-		res.redirect("/user/" + req.user.username);
+		res.redirect("/user/" + req.user.username + "/home");
 	} 
 	else {
-		res.render("login");
+		var hbsObj = {login: true};
+		res.render("login", hbsObj);
 	}
 });
 

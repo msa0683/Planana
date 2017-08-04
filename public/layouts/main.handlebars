@@ -100,7 +100,14 @@
 		<div class="row">
 			<div class="col-xs-12 headerBar">
 				<div class="col-xs-4 col-xs-offset-4 logo text-center"><a href="/">Planana</a></div>
-				<div class="col-xs-4 text-right logout"><a href="/logout">Sign Out<a/> | <a href="/signup">Register</a></div>
+				<div class="col-xs-4 text-right logout">
+					{{#if login}}
+					<a href="/login">Sign In<a/> 
+					{{else}}
+					<a href="/logout">Sign Out<a/> 
+					{{/if}}
+					| <a href="/signup">Register</a>
+				</div>
 			</div>
 		</div>
 		{{{body}}}
