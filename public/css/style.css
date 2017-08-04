@@ -37,11 +37,16 @@ button {
 	margin-bottom: 10px;
 }
 
-.logo {
+.logo a {
 	font-family: 'Indie Flower', cursive;
 	font-size: 32px;
 	font-weight: bold;
 	color: white;
+}
+
+.logo a:hover {
+	color: white;
+	text-decoration: none;
 }
 
 .top-div {
