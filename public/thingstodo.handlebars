@@ -196,13 +196,13 @@
 		</div>
 		</div> <!-- End of div class="col-sm-8" -->
 
-		<div class="col-sm-4"> <!-- Start Itinerary Panel -->
+	<div class="col-sm-4"> <!-- Start Itinerary Panel -->
 		  	<div class="panel panel-default">
 		  		<div class="panel-heading">Your Itinerary</div>
 		  		<form action="/itinerary/{{username}}" method="POST">
 		  			<div id="itinerary-body" class="panel-body"></div>
 		  			<div class="panel-footer text-center">
-		  			<input type="text" name="itinerary_name" placeholder="Enter Itinerary Name"> <br>
+		  			<input type="text" name="itinerary_name" class="form-control" placeholder="Enter Itinerary Name"> <br>
 		  		  	<button type="submit" class="btn btn-success">Save
 		  		  	</button></div>
 		  		</form>
@@ -214,9 +214,9 @@
 <script type="text/javascript">
   $(".btn-primary").on("click",function (){
   		var place = $(this).attr("data");
-  		console.log('place', place);
+  		//console.log('place', place);
   		$(this).remove();
-  		$("#"+place).prepend("<input type='time' name='place_time' style='margin-left:15px;'>")
+  		$("#"+place).prepend("<input type='time' name='place_time' style='margin-left:15px;'><span class='glyphicon glyphicon-time'></span>")
   		$("#itinerary-body").append(document.getElementById(place));
   });
 </script>
