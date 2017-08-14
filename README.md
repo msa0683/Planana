@@ -1,4 +1,6 @@
-Don't go banana, use Planana! 
+#Planana
+
+##Don't go banana, use Planana! 
 
 Planana is the perfect place to search that city that you'd love to go visit, and then save a detailed itinerary based on your search results. 
 
