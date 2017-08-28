@@ -25,5 +25,3 @@ Step 5. Save your itinerary with a unique name for that itinerary. You can view 
 ![ItinGiphy](/public/images/planana5.gif)
 
 Step 6. Go on your awesome vacation and waste no time looking for things to do. You can also plan another trip in step 6, it's up to you!
-
-![LastGiphy](/public/images/planana6.gif)
