@@ -6,6 +6,8 @@ Planana is the perfect place to search that city that you'd love to go visit, an
 
 Step 1. Sign up for a Planana account.
 
+![LoginGiphy](/public/images/planana1.gif)
+
 Step 2. Search a city and check off the types of activities you want to do in that city.
 
 Step 3. On the results page, select a tab for one of the categories you chose. The page will populate with various results for the chosen category, complete with address and star ratings. 
